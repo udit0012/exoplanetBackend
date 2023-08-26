@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json())
 
-app.get("/get-data", async (req, res) => {
+app.get("/", async (req, res) => {
   // const fs = require("fs");
   console.log("csv");
   try {
