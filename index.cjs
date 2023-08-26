@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios')
 // const at=  require('core-js');
 
 const app = express();
@@ -11,9 +12,9 @@ app.get("/get-data", async (req, res) => {
   // const fs = require("fs");
   console.log("csv");
   try {
-    const csv = await fetch('https://raw.githubusercontent.com/udit0012/exoplanetBackend/main/data4.csv')
-    console.log(csv);
-    const data = await csv.text()
+    const csv = await axios('https://raw.githubusercontent.com/udit0012/exoplanetBackend/main/data4.csv')
+    console.log(csv.data);
+    const data = await csv.data
     let array = data.toString()
     const [keys,...rest] = array.trim().split('\n').map((item) => item.split(','));
     let formedArr = rest.map((item) => {
