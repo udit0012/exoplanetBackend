@@ -10,10 +10,10 @@ app.use(express.json())
 
 app.get("/", async (req, res) => {
   // const fs = require("fs");
-  console.log("csv");
+  // console.log("csv");
   try {
     const csv = await axios('https://raw.githubusercontent.com/udit0012/exoplanetBackend/main/data4.csv')
-    console.log(csv.data);
+    // console.log(csv.data);
     const data = await csv.data
     let array = data.toString()
     const [keys,...rest] = array.trim().split('\n').map((item) => item.split(','));
@@ -22,7 +22,7 @@ app.get("/", async (req, res) => {
         keys.forEach((key, index) => (object[key] = item.at(index)));
         return object;
       });
-    console.log("data", formedArr);
+    // console.log("data", formedArr);
     return res.json(formedArr)
   } catch (error) {
     console.log(error);
